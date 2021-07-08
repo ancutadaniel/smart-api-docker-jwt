@@ -48,9 +48,9 @@ app.get('/', (req, res) => {
   res.send('home');
 });
 app.post('/signin', signin.signinAuthentication(db, bcrypt));
-app.post('/register', (req, res) => {
-  register.handleRegister(req, res, db, bcrypt);
-});
+
+app.post('/register', register.registerAuthentication(db, bcrypt));
+
 app.get('/profile/:id', auth.requireAuth, (req, res) => {
   profile.handleProfileGet(req, res, db);
 });
